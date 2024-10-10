@@ -9,16 +9,22 @@ function preload() {
 
 function setup() {
     createCanvas(windowWidth, windowWidth / 3);
-    bunny1 = new Bunny();
-    bunny2 = new Bunny();
     createBunnies();
   }
   
 function draw() {
     background("brown");
     image(backgroundImage, 0, 0, windowWidth, windowWidth / 3);
-    bunny1.move();
-    bunny2.move();
+    
+
+    bunnyList.forEach(function(bunnyObject, index) {
+      bunnyObject.move();
+
+      if (bunnyObject.x > windowWidth) {
+        bunnyList.splice(index, 1);
+      }
+      
+    });
 }
 
 
